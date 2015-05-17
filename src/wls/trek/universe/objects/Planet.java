@@ -8,7 +8,7 @@ import wls.trek.universe.UniverseMain;
 import wls.trek.universe.utils.MathUtils;
 import wls.trek.universe.utils.Vector2D;
 
-public class Planet extends Level implements Runnable{
+public class Planet extends Level{
 	
 	String name;
 	public int mass;
@@ -17,38 +17,26 @@ public class Planet extends Level implements Runnable{
 	public Vector2D gravity;
 	
 	public Planet(Point p, String n, int m){
-		level=2;
-		name=n;
-		mass=m;
 		pos=p;
+		mass=m;
+		name=n;
+		level=2;
 	}
 	
 	public void move(){
 		
-		gravity=MathUtils.calculateGravAttraction(MathUtils.getNearestStar(pos), this);
+		for(int i=0;i<Universe.numStars;i++){
+			gravity=MathUtils.calculateGravAttraction(Universe.stars[i], this);
 		
-		pos.x+=gravity.x;
-		pos.y+=gravity.y;
-		
-		UniverseMain.log("magnitude: "+gravity.magnitude);
+			pos.x+=gravity.x;
+			pos.y+=gravity.y;
+		}
 	}
 	
 	public void renderPlanet(Graphics g){
 		g.setColor(Color.red);
 		g.fillOval(pos.x, pos.y, 10, 10);
-	}
-
-	@Override
-	public void run() {
-		try{
-			while(true){
-				move();
-				Thread.sleep(100);
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
+		g.drawString(name,  pos.x+10, pos.y-10);
 	}
 
 }
