@@ -6,51 +6,59 @@ import wls.trek.universe.UniverseGraphics;
 import wls.trek.universe.utils.MathUtils;
 
 public class Universe {
-	
-	public static int numStars;
-	public static int numPlanets;
-	public static int numSat;
+
+	public static int numBodies;
 	
 	public boolean running=true;
 	
 	int width=UniverseGraphics.FRAME_WIDTH;
 	int height=UniverseGraphics.FRAME_HEIGHT;
 	
-	public static Star[] stars;
-	public static Planet[] planets;
-	public static Satellite[] satellites;
+	public static Body[] bodies;
 	
-	public Universe(int nstars, int nplanets, int nsatellites){
+	public Universe(int nbodies){
 		
-		numStars=nstars;
-		numPlanets=nplanets;
-		numSat=nsatellites;
+		numBodies=nbodies;
 		
-		stars=new Star[nstars];
-		planets=new Planet[nplanets];
-		satellites=new Satellite[nsatellites];
+		bodies=new Body[nbodies];
+		
 	}
 	
 	public void generateUniverse(){
-		generateStars();
-		generatePlanets();
+		generateBodies();
 		
 		try{
 			while(running){
-				for(Star star:Universe.stars){
-					star.move();
+				for(Body body:Universe.bodies){
+					body.move();
 				}
-				for(Planet planet:Universe.planets){
-					planet.move();
-				}
-				Thread.sleep(100);
+				Thread.sleep(1000);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
+	
+	public void generateBodies(){
+		for(int i=0;i<numBodies;i++){
+			int x=MathUtils.randomInRange(0, width);
+			int y=MathUtils.randomInRange(0, height);
+			Point position=new Point(x, y);
+			int mass=MathUtils.randomInRange(1000000000, 2000000000);
+		
+			bodies[i]=new Body(position, "Body No."+i, mass);
+			bodies[i].printVector();
+		}
+	}
+	
+	public static Body getBody(Point p){
+		for(int i=0;i<numBodies;i++)
+			if(p==bodies[i].pos)
+				return bodies[i];
+		return null;
+	}
 
-	public void generateStars() {
+	/*public void generateStars() {
 		for(int i=0;i<numStars;i++){
 			int x=MathUtils.randomInRange(0, width);
 			int y=MathUtils.randomInRange(0, height);
@@ -85,5 +93,5 @@ public class Universe {
 			if(p==planets[i].pos)
 				return planets[i];
 		return null;
-	}
+	}*/
 }

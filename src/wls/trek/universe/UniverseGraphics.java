@@ -8,8 +8,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import wls.trek.universe.objects.Planet;
-import wls.trek.universe.objects.Star;
+import wls.trek.universe.objects.Body;
 import wls.trek.universe.objects.Universe;
 
 public class UniverseGraphics extends JPanel{
@@ -56,11 +55,8 @@ public class UniverseGraphics extends JPanel{
 		g.fillRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
 		
 		//draw objects
-		for(Star star:Universe.stars){
-			star.renderStar(g);
-		}
-		for(Planet planet:Universe.planets){
-			planet.renderPlanet(g);
+		for(Body body : Universe.bodies){
+			body.renderBody(g);
 		}
 		
 		repaint();

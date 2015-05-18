@@ -14,6 +14,7 @@ public class Vector2D {
 	public Vector2D(Point position){
 		x=0;
 		y=0;
+		magnitude=getValue(this);
 		pos=position;
 	}
 	

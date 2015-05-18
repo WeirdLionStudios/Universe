@@ -25,12 +25,12 @@ public class Planet extends Level{
 	
 	public void move(){
 		
-		for(int i=0;i<Universe.numStars;i++){
+		/*for(int i=0;i<Universe.numStars;i++){
 			gravity=MathUtils.calculateGravAttraction(Universe.stars[i], this);
 		
 			pos.x+=gravity.x;
 			pos.y+=gravity.y;
-		}
+		}*/
 	}
 	
 	public void renderPlanet(Graphics g){
