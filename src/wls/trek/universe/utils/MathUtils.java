@@ -20,7 +20,7 @@ public class MathUtils {
 		
 		Vector2D gravity;
 		
-		double distance=getDistance(b1.pos,b2.pos);
+		double distance=getDistance(b1.pos,b2.pos)/10000;
 		
 		double attraction=(G*b1.mass*b2.mass)/Math.pow(distance, 2);
 		double angle=-Math.atan2(b2.pos.y-b1.pos.y, b2.pos.x-b1.pos.x);
@@ -36,19 +36,6 @@ public class MathUtils {
 		
 		return gravity;
 	}
-	
-	/*public static Star getNearestStar(Point p){
-		Point pos = null;
-		double temp=1000;
-		for(int i=0;i<Universe.numStars;i++){
-			double dist=getDistance(p, Universe.stars[i].pos);
-			if(dist<=temp){
-				temp=dist;
-				pos=Universe.stars[i].pos;
-			}
-		}
-		return Universe.getStar(pos);
-	}*/
 	
     public static int randomInRange(int min, int max){	
     	return new Random().nextInt(max-min)+min;	

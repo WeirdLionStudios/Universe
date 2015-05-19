@@ -15,8 +15,8 @@ public class UniverseGraphics extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
-	public static final int FRAME_WIDTH=800;
-	public static final int FRAME_HEIGHT=700;
+	public static final int FRAME_WIDTH=1440;
+	public static final int FRAME_HEIGHT=900;
 	
     private Image dbImage;
     private Graphics dbg;
@@ -57,6 +57,8 @@ public class UniverseGraphics extends JPanel{
 		//draw objects
 		for(Body body : Universe.bodies){
 			body.renderBody(g);
+			//body.acceleration.renderVector(g);
+			body.velocity.renderVector(g);
 		}
 		
 		repaint();

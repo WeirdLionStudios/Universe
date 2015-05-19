@@ -15,7 +15,7 @@ public class Body{
 	public long mass;
 	public String name;
 	public Point pos;
-	Vector2D velocity, acceleration;
+	public Vector2D velocity, acceleration;
 	
 	public Body(Point position, String n, int m){
 		pos=position;

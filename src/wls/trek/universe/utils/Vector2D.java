@@ -31,8 +31,7 @@ public class Vector2D {
 	
 	public void renderVector(Graphics g){
 		g.setColor(Color.white);
-		g.fillOval(pos.x-((int)(x/8)/2),  pos.y-((int)(x/8)/2), (int)(x/8), (int)(x/8));
-		g.drawLine(pos.x, pos.y, pos.x+x, pos.y);
-		g.drawLine(pos.x, pos.y, pos.x, pos.y+y);
+		g.drawLine(pos.x+10, pos.y+10, pos.x+10+x, pos.y+10);
+		g.drawLine(pos.x+10, pos.y+10, pos.x+10, pos.y+10+y);
 	}
 }
