@@ -15,8 +15,8 @@ public class UniverseGraphics extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	
-	public static final int FRAME_WIDTH=1440;
-	public static final int FRAME_HEIGHT=900;
+	public static final int FRAME_WIDTH=1024;
+	public static final int FRAME_HEIGHT=768;
 	
     private Image dbImage;
     private Graphics dbg;

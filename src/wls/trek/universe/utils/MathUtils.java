@@ -20,18 +20,18 @@ public class MathUtils {
 		
 		Vector2D gravity;
 		
-		double distance=getDistance(b1.pos,b2.pos)/10000;
+		double distance=getDistance(b1.pos,b2.pos)/9000;
 		
 		double attraction=(G*b1.mass*b2.mass)/Math.pow(distance, 2);
-		double angle=-Math.atan2(b2.pos.y-b1.pos.y, b2.pos.x-b1.pos.x);
+		double angle=Math.atan2(b2.pos.y-b1.pos.y, b2.pos.x-b1.pos.x);
 		
-		//UniverseMain.log("attraction: "+attraction);
-		//UniverseMain.log("distance: "+distance);
+		UniverseMain.log("attraction of body"+b2.name+": "+attraction);
+		UniverseMain.log("distance: "+distance);
 		//UniverseMain.log("angle: "+angle*180/Math.PI);
 		
-		double velX=attraction*Math.cos(angle);
-		double velY=attraction*Math.sin(angle);
-		//UniverseMain.log("vel: "+velX+"  " +velY);
+		double velX=-attraction*Math.cos(angle);
+		double velY=-attraction*Math.sin(angle);
+		//UniverseMain.log("acceleration of body"+b2.name+": "+velX+"  " +velY);
 		gravity=new Vector2D(b2.pos, (int)velX, (int)velY);
 		
 		return gravity;

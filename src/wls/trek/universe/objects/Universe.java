@@ -32,7 +32,7 @@ public class Universe {
 				for(Body body:Universe.bodies){
 					body.move();
 				}
-				Thread.sleep(1000);
+				Thread.sleep(500);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class Universe {
 			int x=MathUtils.randomInRange(0, width);
 			int y=MathUtils.randomInRange(0, height);
 			Point position=new Point(x, y);
-			int mass=MathUtils.randomInRange(1000000000, 2000000000);
+			double mass=1<<28;
 		
 			bodies[i]=new Body(position, "Body No."+i, mass);
 			bodies[i].printVector();

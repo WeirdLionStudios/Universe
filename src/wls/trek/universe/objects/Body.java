@@ -12,12 +12,12 @@ import wls.trek.universe.utils.Vector2D;
 
 public class Body{
 	
-	public long mass;
+	public double mass;
 	public String name;
 	public Point pos;
 	public Vector2D velocity, acceleration;
 	
-	public Body(Point position, String n, int m){
+	public Body(Point position, String n, double m){
 		pos=position;
 		name=n;
 		mass=m;
@@ -28,17 +28,15 @@ public class Body{
 	
 	public void getVelocity(){
 		//UniverseMain.log(acceleration.x+" | " +acceleration.y);
-		for(int i=0;i<Universe.numBodies;i++){
-			acceleration.x+=
-					MathUtils.calculateGravAttraction(getSubarray(Universe.bodies,this)[0], this).x/mass;
-			acceleration.y+=
-					MathUtils.calculateGravAttraction(getSubarray(Universe.bodies, this)[0], this).y/mass;
+		for(int i=0;i<Universe.numBodies-1;i++){
+			acceleration.x+=MathUtils.calculateGravAttraction(getSubarray(Universe.bodies,this)[i], this).x/mass;
+			acceleration.y+=MathUtils.calculateGravAttraction(getSubarray(Universe.bodies, this)[i], this).y/mass;
 		}
-		UniverseMain.log(MathUtils.calculateGravAttraction(getSubarray(Universe.bodies,this)[0], this).x+" / " +mass);
+		//UniverseMain.log(MathUtils.calculateGravAttraction(getSubarray(Universe.bodies,this)[0], this).x+" / " +mass);
 		
 		//UniverseMain.log(acceleration.x+" | " +acceleration.y);
-		velocity.x+=acceleration.x;
-		velocity.y+=acceleration.y;
+		velocity.x=acceleration.x;
+		velocity.y=acceleration.y;
 	}
 	
 	public void move(){
