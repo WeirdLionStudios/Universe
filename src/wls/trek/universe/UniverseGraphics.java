@@ -18,9 +18,6 @@ public class UniverseGraphics extends JPanel{
 	public static final int FRAME_WIDTH=1024;
 	public static final int FRAME_HEIGHT=768;
 	
-    private Image dbImage;
-    private Graphics dbg;
-	
 	int width=Toolkit.getDefaultToolkit().getScreenSize().width;
 	int height=Toolkit.getDefaultToolkit().getScreenSize().height;
 	
@@ -39,14 +36,6 @@ public class UniverseGraphics extends JPanel{
 		
 	}
 	
-   @Override
-    public void paint(Graphics g){
-        dbImage = createImage(getWidth(), getHeight());
-        dbg = dbImage.getGraphics();
-        paintComponent(dbg);
-        g.drawImage(dbImage, 0, 0, this);
-    }
-	
 	@Override
 	protected void paintComponent(Graphics g){
 		
@@ -57,7 +46,6 @@ public class UniverseGraphics extends JPanel{
 		//draw objects
 		for(Body body : Universe.bodies){
 			body.renderBody(g);
-			//body.acceleration.renderVector(g);
 			body.velocity.renderVector(g);
 		}
 		

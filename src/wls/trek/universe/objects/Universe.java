@@ -30,9 +30,10 @@ public class Universe {
 		try{
 			while(running){
 				for(Body body:Universe.bodies){
+					checkOutOfBounds(body);
 					body.move();
 				}
-				Thread.sleep(500);
+				Thread.sleep(60);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -49,6 +50,11 @@ public class Universe {
 			bodies[i]=new Body(position, "Body No."+i, mass);
 			bodies[i].printVector();
 		}
+	}
+	
+	public void checkOutOfBounds(Body body){
+		if(body.pos.x<-200 || body.pos.y<-200 || body.pos.x>width+200 || body.pos.y>height+200)
+			running=false;
 	}
 	
 	public static Body getBody(Point p){

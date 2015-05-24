@@ -7,7 +7,7 @@ public class UniverseMain {
 	public static void main(String[] args) {
 		UniverseMain main = new UniverseMain();
 		
-		Universe universe=new Universe(3);
+		Universe universe=new Universe(2);
 		//generate Universe
 		UniverseGraphics graphics = new UniverseGraphics();
 		universe.generateUniverse();

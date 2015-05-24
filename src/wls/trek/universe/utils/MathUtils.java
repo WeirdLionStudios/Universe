@@ -25,8 +25,8 @@ public class MathUtils {
 		double attraction=(G*b1.mass*b2.mass)/Math.pow(distance, 2);
 		double angle=Math.atan2(b2.pos.y-b1.pos.y, b2.pos.x-b1.pos.x);
 		
-		UniverseMain.log("attraction of body"+b2.name+": "+attraction);
-		UniverseMain.log("distance: "+distance);
+		//UniverseMain.log("attraction of body"+b2.name+": "+attraction);
+		//UniverseMain.log("distance: "+distance);
 		//UniverseMain.log("angle: "+angle*180/Math.PI);
 		
 		double velX=-attraction*Math.cos(angle);
