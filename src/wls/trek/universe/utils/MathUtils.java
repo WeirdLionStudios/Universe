@@ -25,20 +25,16 @@ public class MathUtils {
 		double attraction=(G*b1.mass*b2.mass)/Math.pow(distance, 2);
 		double angle=Math.atan2(b2.pos.y-b1.pos.y, b2.pos.x-b1.pos.x);
 		
-		//UniverseMain.log("attraction of body"+b2.name+": "+attraction);
-		//UniverseMain.log("distance: "+distance);
-		//UniverseMain.log("angle: "+angle*180/Math.PI);
-		
 		double velX=-attraction*Math.cos(angle);
 		double velY=-attraction*Math.sin(angle);
-		//UniverseMain.log("acceleration of body"+b2.name+": "+velX+"  " +velY);
+		
 		gravity=new Vector2D(b2.pos, (int)velX, (int)velY);
 		
 		return gravity;
 	}
 	
-    public static int randomInRange(int min, int max){	
-    	return new Random().nextInt(max-min)+min;	
-    }
+	public static double randomInRange(double min, double max) {
+		  return (new Random().nextDouble() * (max-min)) + min;
+		}
 
 }

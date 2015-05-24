@@ -33,7 +33,7 @@ public class Universe {
 					checkOutOfBounds(body);
 					body.move();
 				}
-				Thread.sleep(60);
+				Thread.sleep(50);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -42,10 +42,10 @@ public class Universe {
 	
 	public void generateBodies(){
 		for(int i=0;i<numBodies;i++){
-			int x=MathUtils.randomInRange(0, width);
-			int y=MathUtils.randomInRange(0, height);
+			int x=(int) MathUtils.randomInRange(0, width);
+			int y=(int) MathUtils.randomInRange(0, height);
 			Point position=new Point(x, y);
-			double mass=1<<28;
+			double mass=MathUtils.randomInRange(1<<18, 1<<28);
 		
 			bodies[i]=new Body(position, "Body No."+i, mass);
 			bodies[i].printVector();
@@ -53,7 +53,7 @@ public class Universe {
 	}
 	
 	public void checkOutOfBounds(Body body){
-		if(body.pos.x<-200 || body.pos.y<-200 || body.pos.x>width+200 || body.pos.y>height+200)
+		if(body.pos.x<-250 || body.pos.y<-250 || body.pos.x>width+250 || body.pos.y>height+250)
 			running=false;
 	}
 	
